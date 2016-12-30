@@ -23,23 +23,20 @@ except:
 #define list
 products = []
 firstline = True
-lineCount = 0
-#read in each line of raw csv or .txt product file
+#read in first 10 lines only
 for line in fhand:
-    #code for how to skip header row
     if firstline:
         firstline = False
         continue
-    #lets just process the first 10 lines for now
-    if lineCount <10:
-        line = line.rstrip()
-        #split the line into words at each comma
-        words = line.split(",")
-        #if row is blank, skip
-        if len(words)==0:
-            continue
-        #for each field in the row from the input file), print out the string
-        for word in words:
-            print word,
-    lineCount = lineCount + 1
-    print 'the line we just finished processing is: ', lineCount
+    print line
+    line = line.rstrip()
+    #split the line into words at each comma
+    words = line.split(",")
+    #if row is blank, skip
+    if len(words)==0:
+        continue
+    #for each field in the row from the input file), print out the string
+    columnCount = 0
+    for word in words:
+        columnCount = columnCount +1
+    print 'the number of columns in this row is: ', columnCount
